@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Vida Pool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const menu = document.getElementById('nav-menu');
+
+            menuButton.addEventListener('click', () => {
+                menu.classList.toggle('right-0');
+                menu.classList.toggle('hidden');
+            });
+
+            // Function to close the mobile menu if clicking outside of it
+            window.addEventListener('click', function(event) {
+                if (!menu.contains(event.target) && !menuButton.contains(event.target) && !menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                    menu.classList.add('right-full');
+                    menu.classList.remove('right-0');
+                }
+            });
+
+            // Adding click event listeners to links for toggling visibility of content
+            const links = menu.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const content = event.target.nextElementSibling;
+                    content.classList.toggle('hidden');
+                });
+            });
+
+        // Event listener for the FAQ toggle button
+        const faqToggleButton = document.getElementById('faq-toggle');
+        const faqAnswer = document.getElementById('faq-answer');
+
+        faqToggleButton.addEventListener('click', () => {
+            faqAnswer.classList.toggle('hidden');
+        });
+
+            // Event listener for the second FAQ toggle button
+    const faqToggleButton2 = document.getElementById('faq-toggle-2');
+    const faqAnswer2 = document.getElementById('faq-answer-2');
+
+    faqToggleButton2.addEventListener('click', () => {
+        faqAnswer2.classList.toggle('hidden');
+    });
+
+        // Event listeners for the third and fourth FAQ toggle buttons
+        const faqToggleButton3 = document.getElementById('faq-toggle-3');
+    const faqAnswer3 = document.getElementById('faq-answer-3');
+
+    faqToggleButton3.addEventListener('click', () => {
+        faqAnswer3.classList.toggle('hidden');
+    });
+
+    const faqToggleButton4 = document.getElementById('faq-toggle-4');
+    const faqAnswer4 = document.getElementById('faq-answer-4');
+
+    faqToggleButton4.addEventListener('click', () => {
+        faqAnswer4.classList.toggle('hidden');
+    });
+    });
+
+
+    </script>
+
+<style>
+
+    @keyframes popOut {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .pop-out {
+        animation: popOut 0.5s ease-out forwards;
+    }
+
+
+    .gradient-overlay::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 153, 0.7);
+        z-index: 1;
+    }
+    @media screen and (min-width: 768px) {
+        .desktop-clip {
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .custom-desktop-margin {
+            margin-left: 20%;  /* Adjust this value as needed */
+            margin-right: 20%; /* Adjust this value as needed */
+        }
+    }
+    
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <nav class="fixed top-0 w-full bg-blue-500 p-4 z-50">
+        <div class="flex justify-between items-center">
+            <!-- Logo / Branding -->
+            <a href="#" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+                CONTACT US
+            </a>
+            
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-4">
+                <a href="/" class="text-white">HOME</a>
+                <a href="./resurfacing.html" class="text-white">POOL RESURFACING</a>
+                <a href="./about.html" class="text-white">ABOUT US</a>
+                <!-- More links -->
+            </div>
+
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="nav-menu" class="z-50 hidden md:hidden fixed top-0 right-full h-full w-1/2 bg-blue-500 transition-transform duration-300">
+            <div class="block text-white px-4 py-2 text-2xl">Menu</div>
+            <div>
+                <a href="/" class="block text-white hover:bg-blue-700 py-2 px-4">HOME</a>
+             
+            </div>
+             <!-- 
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4 ">POOL RESURFACING</a>
+                <div class="hidden px-4 py-2">Content for Home</div>
+          </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Construction</a>
+                <div class="hidden px-4 py-2">Content for Pool Construction</div>
+            </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Renovation</a>
+                <div class="hidden px-4 py-2">Content for Pool Renovation</div>
+            </div> -->
+            <div>
+                <a href="./resurfacing.html" class="block text-white hover:bg-blue-700 py-2 px-4">POOL RESURFACING</a>
+             
+            </div>
+            <div>
+                <a href="./about.html" class="block text-white hover:bg-blue-700 py-2 px-4">ABOUT US</a>
+             
+            </div>
+            <!-- More links and contents -->
+        </div>
+        
+    </nav>
+
+    <div class="flex justify-center items-center mt-20 mb-4">
+        <img style="max-width:250px;"src="./assets/purevidalogo.png">
+    </div>
+
+    <div class="custom-desktop-margin">
+        <h1 class="text-2xl text-blue-900 font-bold mx-4">ABOUT US</h1>
+
+        <p class="mt-4 ml-4">Pure Vida Pool is a family owned and operated business. We have been in the pool industry for over 20 years. We are a licensed and insured company. We are a company that takes pride in our work and we strive to make our customers happy. We are a company that you can trust to get the job done right.
+        <br/>
+        <br/>
+        <b>About Us at Pure Vida Pools</b>
+        <br/>
+        Welcome to Pure Vida Pools, your premier pool service company based in the heart of New Jersey. Since our inception, we have been dedicated to bringing top-notch pool services to our local communities, transforming backyards into stunning retreats.
+        <br/>
+        <br/>
+        <b>Our Roots in New Jersey</b> 
+        <br/>
+        Founded by a team of passionate pool enthusiasts, Pure Vida Pools is deeply rooted in New Jersey's vibrant communities. Our understanding of the local climate, lifestyle, and architectural trends allows us to provide services that are perfectly tailored to our clients’ needs.
+        <br/>
+        <br/>
+        <b>Our Commitment to Quality</b>
+        Quality is the cornerstone of everything we do at Pure Vida Pools. From meticulous pool resurfacing to regular maintenance, we use only the finest materials and the latest techniques. Our team of skilled professionals is committed to delivering excellence in every project, ensuring your pool is not only aesthetically pleasing but also durable and safe.
+        <br/>
+        <br/>
+        <b>Customer-Centric Approach</b>
+        <br/>
+        We believe that our clients are the heart of our business. That's why we prioritize clear communication, personalized solutions, and a customer-centric approach. Whether you’re looking for a new installation, a resurface, or regular maintenance, we work closely with you to bring your vision to life.
+        <br/>
+        <br/>
+        <b>Innovation and Sustainability</b>
+        <br/>
+        At Pure Vida Pools, we are always looking forward, embracing innovative technologies and sustainable practices. We strive to make pool ownership a joy, not a burden, by providing energy-efficient and eco-friendly pool solutions.
+        <br/>
+        <br/>
+        <b>Community Involvement</b>
+        <br/>
+        As a local New Jersey business, we value our community and actively participate in local events and initiatives. We believe in giving back and building strong relationships within the neighborhoods we serve.
+        <br/>
+        <br/>
+        <b>Join Our Family</b>
+        <br/>
+        When you choose Pure Vida Pools, you're not just a customer; you're part of our family. We invite you to experience the Pure Vida difference - where your pool dreams become a reality, right here in New Jersey.
+        </p>
+    </div>
+
+    <br/>
+    <br/>
+
+       <!-- image that takes up 100% of the screen-->
+        <div class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-45" style="background-image: url('https://www.oasispoolconstruction.com/uplift-data/images/banners/bg-cta-m.webp')">
+            <div class="text-center p-5">
+                
+                <h1 class="text-2xl font-bold text-white">ELEVATE YOUR SWIMMING
+                    </h1>
+                <p class="text-white">
+                IN MAHWAH WITH PURE VIDA POOL
+                </p>
+                <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+                <br/>
+                <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
+                    <i class="fa fa-phone" style="font-size:24px"></i>
+                    CALL TODAY 973-000-0000
+                </button>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center m-4">
+            <img style="max-width:250px;"src="./assets/purevidalogo.png"/>
+        </div>
+
+    
+            <h1 class="text-2xl font-bold text-center text-blue-950">Contact</h1>
+            <br/>
+            <p class="text-center text-blue-950">
+                Pure Vida Pool
+                <br/>
+                1234 Main Street
+                <br/>
+                Mahwah, NJ 07430
+                <br/> <br/>
+                Phone: <b>123-456-7890</b>
+            </p>
+            
+            <h1 class="text-2xl font-bold text-center p-4 text-blue-950">Quick Links</h1>
+            
+            <p class="text-center">
+                <a href="#">Home</a>
+                <br/>
+                <a href="#">Google Maps</a>
+                <br/>
+                <a href="#">Leave a Review</a>
+                <br/>
+            </p>   
+            
+            <h1 class="text-2xl font-bold text-center p-4">Service Areas</h1>
+            <p class="text-center p-4">Mahwah, | NJ Glen Rock, NJ | Franklin Lakes, NJ | Wyckoff, NJ | Allendale, NJ | Paramus, NJ | Saddle River, NJ | Ridgewood, NJ | Montvale, NJ | Ramsey, NJ | Old Tappan, NJ | Ho-Ho-Kus, NJ
+                </p>
+
+            <!-- footer -->
+            <div class="flex justify-center items-center bg-blue-500 p-4">
+                <div class="flex justify-center items-center text-white">
+                    © 2024 , Rights Reserved
+                </div>
+
+
+
+
+
+
+
+    </body>
+    </html>

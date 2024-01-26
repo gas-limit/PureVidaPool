@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Vida Pool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const menu = document.getElementById('nav-menu');
+
+            menuButton.addEventListener('click', () => {
+                menu.classList.toggle('right-0');
+                menu.classList.toggle('hidden');
+            });
+
+            // Function to close the mobile menu if clicking outside of it
+            window.addEventListener('click', function(event) {
+                if (!menu.contains(event.target) && !menuButton.contains(event.target) && !menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                    menu.classList.add('right-full');
+                    menu.classList.remove('right-0');
+                }
+            });
+
+            // Adding click event listeners to links for toggling visibility of content
+            const links = menu.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const content = event.target.nextElementSibling;
+                    content.classList.toggle('hidden');
+                });
+            });
+
+        // Event listener for the FAQ toggle button
+        const faqToggleButton = document.getElementById('faq-toggle');
+        const faqAnswer = document.getElementById('faq-answer');
+
+        faqToggleButton.addEventListener('click', () => {
+            faqAnswer.classList.toggle('hidden');
+        });
+
+            // Event listener for the second FAQ toggle button
+    const faqToggleButton2 = document.getElementById('faq-toggle-2');
+    const faqAnswer2 = document.getElementById('faq-answer-2');
+
+    faqToggleButton2.addEventListener('click', () => {
+        faqAnswer2.classList.toggle('hidden');
+    });
+
+        // Event listeners for the third and fourth FAQ toggle buttons
+        const faqToggleButton3 = document.getElementById('faq-toggle-3');
+    const faqAnswer3 = document.getElementById('faq-answer-3');
+
+    faqToggleButton3.addEventListener('click', () => {
+        faqAnswer3.classList.toggle('hidden');
+    });
+
+    const faqToggleButton4 = document.getElementById('faq-toggle-4');
+    const faqAnswer4 = document.getElementById('faq-answer-4');
+
+    faqToggleButton4.addEventListener('click', () => {
+        faqAnswer4.classList.toggle('hidden');
+    });
+    });
+
+
+    </script>
+
+<style>
+
+    @keyframes popOut {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .pop-out {
+        animation: popOut 0.5s ease-out forwards;
+    }
+
+
+    .gradient-overlay::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 153, 0.7);
+        z-index: 1;
+    }
+    @media screen and (min-width: 768px) {
+        .desktop-clip {
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .custom-desktop-margin {
+            margin-left: 20%;  /* Adjust this value as needed */
+            margin-right: 20%; /* Adjust this value as needed */
+        }
+    }
+    
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <nav class="fixed top-0 w-full bg-blue-500 p-4 z-50">
+        <div class="flex justify-between items-center">
+            <!-- Logo / Branding -->
+            <a href="#" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+                CONTACT US
+            </a>
+            
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-4">
+                <a href="/" class="text-white">HOME</a>
+                <a href="/resurfacing.html" class="text-white">POOL RESURFACING</a>
+                <a href="./about.html" class="text-white">ABOUT US</a>
+                <!-- More links -->
+            </div>
+
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="nav-menu" class="z-50 hidden md:hidden fixed top-0 right-full h-full w-1/2 bg-blue-500 transition-transform duration-300">
+            <div class="block text-white px-4 py-2 text-2xl">Menu</div>
+            <div>
+                <a href="/" class="block text-white hover:bg-blue-700 py-2 px-4">HOME</a>
+             
+            </div>
+             <!-- 
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4 ">POOL RESURFACING</a>
+                <div class="hidden px-4 py-2">Content for Home</div>
+          </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Construction</a>
+                <div class="hidden px-4 py-2">Content for Pool Construction</div>
+            </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Renovation</a>
+                <div class="hidden px-4 py-2">Content for Pool Renovation</div>
+            </div> -->
+            <div>
+                <a href="/resurfacing.html" class="block text-white hover:bg-blue-700 py-2 px-4">POOL RESURFACING</a>
+             
+            </div>
+            <div>
+                <a href="./about.html" class="block text-white hover:bg-blue-700 py-2 px-4">ABOUT</a>
+             
+            </div>
+            <!-- More links and contents -->
+        </div>
+        
+    </nav>
+
+    <div class="flex justify-center items-center mt-20 mb-4">
+        <img style="max-width:250px;"src="./assets/purevidalogo.png">
+    </div>
+
+    <div class="text-center m-4" >
+        <h1 class="text-2xl text-blue-900 font-bold mt-10">POOL RESURFACING SPECIALISTS</h1>
+        <br/>
+        <p class="custom-desktop-margin"> At Pure Vida Pools, we understand that your swimming pool is more than just a place to cool off during the hot summer months; it's a centerpiece of your home, a haven for relaxation, and a source of endless fun for your family and friends. Over time, even the most well-maintained pools can start to show signs of wear and tear. That's where our expert pool resurfacing services come into play. 
+          
+          
+        </p>  
+        <p class="custom-desktop-margin"> 
+            Our team of skilled professionals is dedicated to restoring the beauty and functionality of your swimming pool. We specialize in providing high-quality resurfacing services that not only rejuvenate your pool's appearance but also extend its lifespan. Using the latest techniques and the finest materials, we ensure that your pool is not just restored, but transformed into a stunning aquatic oasis.
+        </p> 
+        
+        <p class="custom-desktop-margin"> 
+            Whether your pool is battling with surface cracks, stains, or simply looks outdated, Pure Vida Pools is here to help. Our resurfacing services are tailored to meet the unique needs of your pool, ensuring a result that reflects your personal style and enhances the overall aesthetic of your outdoor space.
+        </p>
+        <h1 class="text-2xl text-blue-900 font-bold mt-10">BENEFITS OF POOL LINER INSTALLATION</h1>
+        <br/>
+        <p class="custom-desktop-margin"> 
+            If you're ready to give your pool a fresh new look, contact us today to schedule a consultation. We look forward to working with you!
+            
+            Choosing the right material for your swimming pool is crucial for both its longevity and your enjoyment. At Pure Vida Pools, we specialize in vinyl liner pool installations, a choice favored by many homeowners for its numerous advantages. Here’s why a vinyl liner pool might be the perfect fit for your home:
+        </p>
+        <br/>
+
+        <p class="custom-desktop-margin text-left"> 
+            <b>1. Cost-Effective Solution</b>
+            <br/>
+            Vinyl liner pools are known for their affordability, both in initial installation and long-term maintenance. They offer a budget-friendly alternative to concrete and fiberglass pools without compromising on quality and aesthetics.
+            <br/>
+            <br/>
+            <b>2.  Customizable Designs </b>
+            <br/>
+            One of the most significant advantages of vinyl liner pools is their versatility in design. You can choose from a wide array of patterns, colors, and styles to match your personal taste and landscape design. Whether you want a classic look or a modern touch, vinyl liners cater to every preference.
+            <br/>
+            <br/>
+            <b>3.  Comfortable Surface</b>
+            <br/>
+            The smooth texture of vinyl liners is gentle on feet and provides a more comfortable swimming experience. This feature is especially appreciated by families with children, as it reduces the risk of scrapes and bruises common in concrete pools.
+            <br/>
+            <br/>
+            <b>4.  Quick Installation </b>
+            <br/>
+            Vinyl liner pools typically have shorter installation times compared to other types. This means you can enjoy your new pool sooner, with less disruption to your daily life and backyard activities.
+            <br/>
+            <br/>
+            <b>5.  Energy Efficiency </b>
+            <br/>
+            Vinyl liners are excellent at retaining heat, making your pool more energy-efficient. This can lead to lower heating costs and a more environmentally friendly pool.
+            <br/>
+            <br/>
+            <b>6.  Easy to Repair and Replace </b>
+            <br/>
+            In the event of damage, vinyl liners are much easier and less expensive to repair or replace than other pool types. This ease of maintenance ensures that your pool remains in pristine condition with minimal hassle.
+            <br/>
+            <br/>
+            <b>7.  Algae and Bacteria Resistant </b>
+            <br/>
+            Vinyl liners are non-porous, which inhibits algae growth and makes them easier to clean. This feature contributes to better water quality and reduces the amount of chemicals needed to maintain your pool.
+            
+            <br/>
+            At Pure Vida Pools, we are committed to providing high-quality vinyl liner pool installations that are tailored to your specific needs and preferences. Embrace the numerous benefits of a vinyl liner pool and make your backyard the envy of the neighborhood.
+        </p>
+
+        <h1 class="text-2xl text-blue-900 font-bold mt-10">WHY CHOOSE PURE VIDA FOR POOL RESURFACING</h1>
+        <br/>
+        <p class="custom-desktop-margin text-left">
+            
+             ✔️ Expertise and Experience: Our team brings years of specialized experience, ensuring top-quality resurfacing for your pool.</li>
+            <br/>
+            <br/>
+             ✔️ Customized Solutions: We tailor our services to meet your pool's unique needs and your personal style.</li>
+             <br/>
+             <br/>
+             ✔️ Outstanding Customer Service: Your satisfaction is our priority. We’re dedicated to exceeding your expectations at every step.
+                <br/>
+                <br/>
+            ✔️ Quality and Value: We use high-quality materials and offer competitive pricing, delivering excellent value for your investment.
+            <br/>
+            <br/>
+            ✔️Efficiency and Reliability: Count on us for timely completion and a comprehensive warranty, ensuring peace of mind and lasting enjoyment of your resurfaced pool.
+        
+        </p>
+        <br/>
+    <div class="text-left custom-desktop-margin">
+        <h1 class="text-2xl text-blue-900 font-bold mt-10">THE PROBLEM WITH NOT COMPLETING POOL RESURFACING INSTALLATION</h1>
+        <br/>
+        <b>1. Decreased Pool Longevity:</b> Without proper resurfacing, your pool's structure can degrade faster, leading to costly repairs or even the need for a complete rebuild.
+        <br/>
+        <br/>
+        <b>2. Safety Hazards:</b> Cracks and rough surfaces not only look unappealing but can also be a safety hazard, increasing the risk of cuts and injuries.
+        <br/>
+        <br/>
+        <b>3. Lowered Aesthetic Appeal:</b> An unsurfaced pool can quickly lose its visual appeal, diminishing the overall look and feel of your outdoor space.
+        Increased Maintenance Costs: Pools with deteriorating surfaces often require more chemicals and cleaning, leading to higher maintenance costs.
+        Reduced Property Value: A well-maintained pool can be an asset, but a pool in poor condition can negatively impact your property's value.
+        <br/>
+    </div>
+        <div class="custom-desktop-margin">
+        <h1 class="text-2xl text-blue-900 font-bold mt-10">FREQUENTLY ASKED QUESTIONS</h1>
+
+        <h1 class="text-2xl text-blue-400 font-bold mt-10">What is the Lifespan of a Pool Resurface Installation?</h1>
+        When you choose Pure Vida Pools for your pool resurfacing, you're investing in a solution that can last up to 15 years. Our use of superior materials and expert craftsmanship ensures that your pool not only looks fantastic but also stands the test of time, providing you with many years of enjoyment and peace of mind.
+
+        <h1 class="text-2xl text-blue-400 font-bold mt-10">How Long Does Pool Resurfacing Take?</h1>
+        We understand that your time is precious, which is why our skilled team at Pure Vida Pools works efficiently to complete your pool resurfacing. Typically, the installation process takes just 1-2 weeks, depending on the specifics of your project. Our goal is to deliver a swift, high-quality installation so that you can enjoy your newly resurfaced pool without a lengthy wait.
+
+        <h1 class="text-2xl text-blue-400 font-bold mt-10">Can a Resurface Be Customized to Fit My Backyard?</h1>
+        Definitely! At Pure Vida Pools, we specialize in customizing pool resurfaces to perfectly match your backyard's aesthetic and your personal style. Whether you're looking for a modern, sleek finish or a traditional, classic look, we offer a variety of styles and finishes to ensure your pool is a seamless extension of your outdoor living space.
+
+        <h1 class="text-2xl text-blue-400 font-bold mt-10">Can Pure Vida Assist with Pool Maintenance After Installation?</h1>
+        Yes, we can! Post-installation, Pure Vida Pools offers excellent pool maintenance services. Our commitment to your pool’s longevity extends beyond resurfacing. We provide essential maintenance services, from routine cleaning to chemical management, ensuring your pool remains in optimal condition for years to come. Our expert team is here to keep your pool sparkling and enjoyable, season after season.
+    </div>
+</div>
+<br/>
+        <!-- image that takes up 100% of the screen-->
+        <div class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-45" style="background-image: url('https://www.oasispoolconstruction.com/uplift-data/images/banners/bg-cta-m.webp')">
+            <div class="text-center p-5">
+                
+                <h1 class="text-2xl font-bold text-white">ELEVATE YOUR SWIMMING
+                    </h1>
+                <p class="text-white">
+                IN MAHWAH WITH PURE VIDA POOL
+                </p>
+                <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+                <br/>
+                <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
+                    <i class="fa fa-phone" style="font-size:24px"></i>
+                    CALL TODAY 973-000-0000
+                </button>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center m-4">
+            <img style="max-width:250px;"src="./assets/purevidalogo.png"/>
+        </div>
+
+    
+            <h1 class="text-2xl font-bold text-center text-blue-950">Contact</h1>
+            <br/>
+            <p class="text-center text-blue-950">
+                Pure Vida Pool
+                <br/>
+                1234 Main Street
+                <br/>
+                Mahwah, NJ 07430
+                <br/> <br/>
+                Phone: <b>123-456-7890</b>
+            </p>
+            
+            <h1 class="text-2xl font-bold text-center p-4 text-blue-950">Quick Links</h1>
+            
+            <p class="text-center">
+                <a href="#">Home</a>
+                <br/>
+                <a href="#">Google Maps</a>
+                <br/>
+                <a href="#">Leave a Review</a>
+                <br/>
+            </p>   
+            
+            <h1 class="text-2xl font-bold text-center p-4">Service Areas</h1>
+            <p class="text-center p-4">Mahwah, | NJ Glen Rock, NJ | Franklin Lakes, NJ | Wyckoff, NJ | Allendale, NJ | Paramus, NJ | Saddle River, NJ | Ridgewood, NJ | Montvale, NJ | Ramsey, NJ | Old Tappan, NJ | Ho-Ho-Kus, NJ
+                </p>
+
+            <!-- footer -->
+            <div class="flex justify-center items-center bg-blue-500 p-4">
+                <div class="flex justify-center items-center text-white">
+                    © 2024 , Rights Reserved
+                </div>
+</body>
+</html>
