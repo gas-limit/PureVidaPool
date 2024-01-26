@@ -70,6 +70,22 @@
 
 <style>
 
+    @keyframes popOut {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .pop-out {
+        animation: popOut 0.5s ease-out forwards;
+    }
+
+
     .gradient-overlay::before {
         content: '';
         position: absolute;
@@ -148,7 +164,7 @@
     <div class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-96 relative" style="background-image: url('https://leisurepoolsusa.com/wp-content/uploads/2020/06/best-type-of-swimming-pool-for-my-home_2.jpg')">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-white opacity-70"></div>
-        <div class="text-center z-10 [text-shadow:_1px_3px_1px_rgb(0_0_0_/_40%)] ">
+        <div class="pop-out text-center z-10 [text-shadow:_1px_3px_1px_rgb(0_0_0_/_40%)] ">
             <h1 class="text-4xl text-white font-bold drop-shadow-sm">EXQUISITELY CRAFTED POOLS</h1>
             <p class="text-xl text-white font-bold">CONTACT US TODAY!</p>
             <br/>
