@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const menu = document.getElementById('nav-menu');
+
+            menuButton.addEventListener('click', () => {
+                menu.classList.toggle('right-0');
+                menu.classList.toggle('hidden');
+            });
+
+            // Function to close the mobile menu if clicking outside of it
+            window.addEventListener('click', function(event) {
+                if (!menu.contains(event.target) && !menuButton.contains(event.target) && !menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                    menu.classList.add('right-full');
+                    menu.classList.remove('right-0');
+                }
+            });
+
+            // Adding click event listeners to links for toggling visibility of content
+            const links = menu.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const content = event.target.nextElementSibling;
+                    content.classList.toggle('hidden');
+                });
+            });
+
+        // Event listener for the FAQ toggle button
+        const faqToggleButton = document.getElementById('faq-toggle');
+        const faqAnswer = document.getElementById('faq-answer');
+
+        faqToggleButton.addEventListener('click', () => {
+            faqAnswer.classList.toggle('hidden');
+        });
+
+            // Event listener for the second FAQ toggle button
+    const faqToggleButton2 = document.getElementById('faq-toggle-2');
+    const faqAnswer2 = document.getElementById('faq-answer-2');
+
+    faqToggleButton2.addEventListener('click', () => {
+        faqAnswer2.classList.toggle('hidden');
+    });
+
+        // Event listeners for the third and fourth FAQ toggle buttons
+        const faqToggleButton3 = document.getElementById('faq-toggle-3');
+    const faqAnswer3 = document.getElementById('faq-answer-3');
+
+    faqToggleButton3.addEventListener('click', () => {
+        faqAnswer3.classList.toggle('hidden');
+    });
+
+    const faqToggleButton4 = document.getElementById('faq-toggle-4');
+    const faqAnswer4 = document.getElementById('faq-answer-4');
+
+    faqToggleButton4.addEventListener('click', () => {
+        faqAnswer4.classList.toggle('hidden');
+    });
+    });
+
+
+    </script>
+
+<style>
+
+    .gradient-overlay::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 153, 0.7);
+        z-index: 1;
+    }
+    @media screen and (min-width: 768px) {
+        .desktop-clip {
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .custom-desktop-margin {
+            margin-left: 20%;  /* Adjust this value as needed */
+            margin-right: 20%; /* Adjust this value as needed */
+        }
+    }
+    
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <nav class="fixed top-0 w-full bg-blue-500 p-4 z-50">
+        <div class="flex justify-between items-center">
+            <!-- Logo / Branding -->
+            <a href="#" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+                CONTACT US
+            </a>
+            
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-4">
+                <a href="#" class="text-white">Home</a>
+                <a href="#" class="text-white">Pool Construction</a>
+                <a href="#" class="text-white">Pool Renovation</a>
+                <!-- More links -->
+            </div>
+
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="nav-menu" class="z-50 hidden md:hidden fixed top-0 right-full h-full w-1/2 bg-blue-500 transition-transform duration-300">
+            <div class="block text-white px-4 py-2 text-2xl">Menu</div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4 ">Home</a>
+                <div class="hidden px-4 py-2">Content for Home</div>
+            </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Construction</a>
+                <div class="hidden px-4 py-2">Content for Pool Construction</div>
+            </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Renovation</a>
+                <div class="hidden px-4 py-2">Content for Pool Renovation</div>
+            </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">nocollapse</a>
+             
+            </div>
+            <!-- More links and contents -->
+        </div>
+        
+    </nav>
+
+    <div class="flex justify-center items-center mt-20 mb-4">
+        <img style="max-width:250px;"src="./assets/purevidalogo.png">
+    </div>
+
+    <!-- div that is 100% width of the screen that has the background of an image and text inside of it that is centered-->
+    <div class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-96 relative" style="background-image: url('https://leisurepoolsusa.com/wp-content/uploads/2020/06/best-type-of-swimming-pool-for-my-home_2.jpg')">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-white opacity-70"></div>
+        <div class="text-center z-10 [text-shadow:_1px_3px_1px_rgb(0_0_0_/_40%)] ">
+            <h1 class="text-4xl text-white font-bold drop-shadow-sm">EXQUISITELY CRAFTED POOLS</h1>
+            <p class="text-xl text-white font-bold">CONTACT US TODAY!</p>
+            <br/>
+            <!-- contact us button-->
+            <button class="bg-blue-900 font-bold text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+            <br/>
+
+            <!-- button that opens phone number to call-->
+            <a href="tel:1234567890">
+                <button class="bg-blue-400 font-bold text-blue-900 rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 m-2 transform transition duration-500 ease-in-out hover:-translate-y-1">
+                    <i class="fa fa-phone" style="font-size:24px"></i>
+                    CALL TODAY 973-000-0000
+                </button>
+            </a>
+        </div>
+        </div>
+
+        <!-- centered header text-->
+        <div class="text-center m-4" >
+            <h1 class="text-2xl text-blue-900 font-bold">YOUR TRUSTED LOCAL POOL INSTALLATION COMPANY</h1>
+            <br/>
+            <p class="custom-desktop-margin"> Pure Vida is a premier pool construction company that specializes in creating beautiful and functional swimming pools for residents in Mahwah and the surrounding areas. With years of experience in the pool construction industry, our team of experts offers a wide range of services that will take your pool to the next level. Our commitment to quality and customer satisfaction is evident in every project we undertake, making us the go-to inground pool contractor in Mahwah and beyond. 
+                <br/>
+                <br/>
+                
+                Looking to create your dream pool? Do you want the perfect landscape design to complement it? Look no further than ! We are proud to be the go-to choice for your pool construction needs and more. Don't settle for anything less than the best when it comes to creating the perfect oasis in your backyard. Contact Pure Vida Pool today and let us make your vision a reality.
+            </p>
+            <!-- read more button -->
+            <button class="m-2 bg-blue-900 font-bold text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">READ MORE</button>
+        </div>
+
+        <!-- Container for text and image -->
+        <div class="flex flex-col md:flex-row justify-between items-center m-4">
+
+    <div class="text-center md:text-left md:w-1/2 lg:ml-9">
+            <h1 class="text-2xl font-bold text-blue-900">OUR COMPLETE POOL CONSTRUCTION SERVICES</h1>
+            <br/>
+            <p>Pure Vida Pool offers a wide range of services for all your pool and outdoor living needs. We specialize in providing the highest quality pool construction, landscape design, and maintenance services to our clients. Whether you're looking to create a new pool or want to renovate an existing one, our team of experts can help you create your dream outdoor space. Our complete services include: 
+                <br/>
+                <br/>
+                
+                ✔️ Vinyl Liner Pool Installation
+                <br/>
+                ✔️ Gunite Pool Installation
+                <br/>
+                ✔️ Pool Tiling
+                <br/>
+                ✔️ Pool Coping
+                <br/>
+                ✔️ Pool Plastering
+
+            </p>
+            <br/>
+            <!-- read more button -->
+            <button class="m-2 bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">LEARN MORE</button>
+        </div>
+        <!-- image of pool that is 100% width of the screen-->
+        <div class="w-full md:w-1/2 h-96 bg-cover bg-center bg-no-repeat desktop-clip" style="background-image: url('https://leisurepoolsusa.com/wp-content/uploads/2020/06/best-type-of-swimming-pool-for-my-home_2.jpg')">
+        </div>
+        
+
+    </div>
+
+
+    </div>
+        <div class="relative bg-cover bg-center bg-no-repeat h-120" style="background-image: url('./assets/New_Jersey_map.jpg')">
+            <div class="text-center p-5">
+                <h1 class="text-2xl text-blue-950 font-bold">AREAS WE SERVICE</h1>
+                <p class="p-4">If you live in Mahwah or any of the following areas, we would be glad to provide you with our exceptional pool construction services:</p>
+                <div class="text-blue-800">
+                <p> Mahwah, NJ</p>
+                <p> Ramsey, NJ</p>
+                <p> Franklin Lakes, NJ</p>
+                <p> Wyckoff, NJ</p>
+                <p> Oakland, NJ</p>
+                <p> Wayne, NJ</p>
+                <p> Ridgewood, NJ</p>
+                <p> Saddle River, NJ</p>
+                </div>
+                <button class="m-2 bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">FIND OUT MORE</button>
+            </div>
+        </div>
+        
+    
+<!-- Container for text and image -->
+<div class="flex flex-col md:flex-row justify-between items-center m-4 lg:0">
+
+    <!-- Text Section -->
+    <div class="text-center md:text-left md:w-1/2 lg:ml-9 sm:m-4">
+        <h1 class="text-2xl font-bold text-blue-900">POOL TILING</h1>
+        <p >  Pool tiling is an essential aspect of the pool construction process. Not only does it enhance the overall aesthetics of the pool, but it also provides a protective layer to the pool's interior, preventing damage from harsh chemicals and weather conditions. A wide range of tile materials and designs are available, including porcelain, glass, and natural stone, that can transform the pool area into an eye-catching masterpiece. Pool tiling offers several advantages, including durability, easy maintenance, and resistance to staining and fading.</p>
+        <p> At Pure Vida Pool, pool tiling is one of our core services, and we have years of experience in providing customized tiling solutions for our clients. Our team of experts has the knowledge and skill to handle all types of pool tiling projects, from simple repairs to complete installations. They offer a vast selection of tiles in various sizes, shapes, and colors, ensuring that the client's vision for their pool is fully realized. With Pure Vida Pool, you can rest assured that your pool will not only be functional but also a beautiful and luxurious addition to your property.</p>
+        <br/>
+        <!-- Learn More Button -->
+        <div class="flex justify-center md:justify-start">
+            <button class="bg-blue-900 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1 font-bold">LEARN MORE</button>
+        </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="w-full md:w-1/2 h-96 bg-cover bg-center bg-no-repeat desktop-clip" style="background-image: url('https://mjplasteringca.com/wp-content/uploads/2019/07/photo-1555248585-7ac99566c9bd.jpeg')">
+    </div>
+
+</div>
+
+        <div class="relative bg-cover bg-center bg-no-repeat h-120" style="background-image: url('https://moreheadpools.com/wp-content/uploads/2019/10/13-116-155-768x512.jpg')">
+           
+           
+            <div class="text-center p-5 z-10">
+
+                <div class="gradient-overlay"></div>
+                <div class="relative z-10 custom-desktop-margin">
+                <h1 class="text-2xl text-white font-bold lg:mt-6 lg:mb-6">ADD TO THE BEAUTY OF YOUR POOL UPGRADE WITH OUR HARDSCAPE SERVICES!</h1>
+                <p class="text-white">
+                    If you're looking to upgrade the aesthetic appeal of your pool area, look no further than Pure Vida Pool's hardscape services. Our team of skilled professionals can design and install a range of hardscaping features to complement your pool's unique style and enhance the overall look and feel of your outdoor space.
+                </p>
+                <br/>
+                <p class="text-white">
+                    From elegant stone walkways to stylish patio areas, our hardscaping services can provide a stunning backdrop for your pool area. Our team will work with you to create a customized plan that incorporates your personal style and preferences, ensuring that your new hardscaping features perfectly complement your pool and surrounding landscape. So why not take your pool area to the next level with Pure Vida Pool's hardscaping services? Contact us today to learn more and schedule your consultation.
+                </p>
+                <button class="m-2 bg-blue-400 text-blue-950 font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">LEARN MORE</button>
+            </div>
+        </div>
+        </div>
+
+        <div class="items-center">
+            <!-- Header for "Pool tiling"-->
+            <div class="text-2xl font-bold text-blue-900 text-center m-4">
+                POOL SERVICES
+            </div>
+            <div class="custom-desktop-margin">
+            <p class="m-4 text-center">
+                At Pure Vida Pool, we understand the importance of keeping your pool in top condition. That's why we offer comprehensive pool services to ensure that your pool stays clean and properly maintained throughout the year. Our pool cleaning services include skimming and removing debris, brushing the walls and floor, and vacuuming. We also provide chemical treatments to keep the water balanced and prevent the growth of algae and bacteria. In addition, Pure Vida Pool offers regular maintenance services such as checking the filtration system, maintaining the pool equipment, and performing water testing to ensure your pool is always functioning properly. With our pool services, you can rest assured that your pool will always be in top condition and ready for use.
+            </p>
+        </div>
+            <!-- learn more button -->
+            <div class="flex justify-center">
+            <button class="bg-blue-900 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1 font-bold">LEARN MORE</button>
+            </div>
+        </div>
+        <br/>
+        <div class="lg:flex lg:justify-center lg:flex-col">
+        <div class="items-center m-4 border-solid border-2 mx-20 shadow-2xl lg:ml-96 lg:mr-96">
+            <!-- Button for exposing collapsible text -->
+            <div class="flex justify-center">
+                <button id="faq-toggle" class="bg-blue-900 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1 font-bold">
+                    WHAT TYPES OF INGROUND SWIMMING POOLS DO YOU INSTALL?
+                </button>
+            </div>
+
+            <!-- Hidden text section -->
+            <div id="faq-answer" class="hidden text-center m-4">
+                <p>The best type of pool will depend on your personal preferences, budget, and available space...</p>
+            </div>
+        </div>
+
+        <div class="items-center m-4 border-solid border-2 mx-20 shadow-2xl lg:ml-96 lg:mr-96">
+            <div class="flex justify-center">
+                <button id="faq-toggle-2" class="bg-blue-900 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1 font-bold">
+                    CAN I REMODEL MY EXISTING POOL SPACE?
+                </button>
+            </div>
+            <div id="faq-answer-2" class="hidden text-center m-4">
+                <p>Yes, Pure Vida Pool can help remodel your existing pool space to make it more functional and visually appealing. Our team has experience in pool renovations and can assist with a variety of updates, such as adding new tile or coping, replacing outdated equipment, and re-plastering the pool. We can work with you to create a plan that fits your budget and vision for your pool area.</p>
+            </div>
+        </div>
+
+                <!-- Third collapsible section -->
+        <div class="items-center m-4 border-solid border-2 mx-20 shadow-2xl lg:ml-96 lg:mr-96">
+            <div class="flex justify-center">
+                <button id="faq-toggle-3" class="bg-blue-900 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1 font-bold">DO YOU OFFER ONGOING POOL MAINTENANCE AND CLEANINGS?</button>
+            </div>
+            <div id="faq-answer-3" class="hidden text-center m-4">
+                <p>Yes, we do offer ongoing pool maintenance and cleanings. We understand that owning a pool can be a significant investment, and it's essential to maintain it properly. Our team of experienced professionals will ensure that your pool is kept clean and well-maintained throughout the year. We offer a variety of services, including pool cleaning, equipment maintenance, and repair. Our maintenance plans are customizable to fit your specific needs and budget.</p>
+            </div>
+        </div>
+
+        <!-- Fourth collapsible section -->
+        <div class="items-center m-4 border-solid border-2 mx-20 shadow-2xl lg:ml-96 lg:mr-96">
+            <div class="flex justify-center">
+                <button id="faq-toggle-4" class="bg-blue-900 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1 font-bold">HOW DOES THE LANDSCAPING AROUND MY POOL IMPACT MY DESIGN?</button>
+            </div>
+            <div id="faq-answer-4" class="hidden text-center m-4">
+                <p>The landscaping around your pool can have a significant impact on your pool design. Not only does it affect the overall aesthetics, but it can also impact the functionality and safety of your pool area. Properly designed landscaping can provide privacy and shade while enhancing the overall ambiance of your outdoor living space. It can also help with drainage and prevent erosion. The pros at Pure Vida Pool will work with you to create a cohesive design that incorporates your pool and surrounding landscape to create a beautiful and functional outdoor oasis.</p>
+            </div>
+        </div>
+
+        </div>
+        
+        <!-- image that takes up 100% of the screen-->
+        <div class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-45" style="background-image: url('https://www.oasispoolconstruction.com/uplift-data/images/banners/bg-cta-m.webp')">
+            <div class="text-center p-5">
+                
+                <h1 class="text-2xl font-bold text-white">ELEVATE YOUR SWIMMING
+                    </h1>
+                <p class="text-white">
+                IN MAHWAH WITH PURE VIDA POOL
+                </p>
+                <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+                <br/>
+                <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
+                    <i class="fa fa-phone" style="font-size:24px"></i>
+                    CALL TODAY 973-000-0000
+                </button>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center m-4">
+            <img style="max-width:250px;"src="./assets/purevidalogo.png"/>
+        </div>
+
+    
+            <h1 class="text-2xl font-bold text-center text-blue-950">Contact</h1>
+            <br/>
+            <p class="text-center text-blue-950">
+                Pure Vida Pool
+                <br/>
+                1234 Main Street
+                <br/>
+                Mahwah, NJ 07430
+                <br/> <br/>
+                Phone: <b>123-456-7890</b>
+            </p>
+            
+            <h1 class="text-2xl font-bold text-center p-4 text-blue-950">Quick Links</h1>
+            
+            <p class="text-center">
+                <a href="#">Home</a>
+                <br/>
+                <a href="#">Google Maps</a>
+                <br/>
+                <a href="#">Leave a Review</a>
+                <br/>
+            </p>   
+            
+            <h1 class="text-2xl font-bold text-center p-4">Service Areas</h1>
+            <p class="text-center p-4">Mahwah, | NJ Glen Rock, NJ | Franklin Lakes, NJ | Wyckoff, NJ | Allendale, NJ | Paramus, NJ | Saddle River, NJ | Ridgewood, NJ | Montvale, NJ | Ramsey, NJ | Old Tappan, NJ | Ho-Ho-Kus, NJ
+                </p>
+
+            <!-- footer -->
+            <div class="flex justify-center items-center bg-blue-500 p-4">
+                <div class="flex justify-center items-center text-white">
+                    © 2024 , Rights Reserved
+                </div>
+
+
+        
+        
+
+
+
+
+    
+    
+
+
+
+
+</body>
+</html>
