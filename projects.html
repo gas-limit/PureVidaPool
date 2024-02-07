@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Vida Pool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const menu = document.getElementById('nav-menu');
+
+            menuButton.addEventListener('click', () => {
+                menu.classList.toggle('right-0');
+                menu.classList.toggle('hidden');
+            });
+
+            // Function to close the mobile menu if clicking outside of it
+            window.addEventListener('click', function(event) {
+                if (!menu.contains(event.target) && !menuButton.contains(event.target) && !menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                    menu.classList.add('right-full');
+                    menu.classList.remove('right-0');
+                }
+            });
+
+            // Adding click event listeners to links for toggling visibility of content
+            const links = menu.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const content = event.target.nextElementSibling;
+                    content.classList.toggle('hidden');
+                });
+            });
+
+        // Event listener for the FAQ toggle button
+        const faqToggleButton = document.getElementById('faq-toggle');
+        const faqAnswer = document.getElementById('faq-answer');
+
+        faqToggleButton.addEventListener('click', () => {
+            faqAnswer.classList.toggle('hidden');
+        });
+
+            // Event listener for the second FAQ toggle button
+    const faqToggleButton2 = document.getElementById('faq-toggle-2');
+    const faqAnswer2 = document.getElementById('faq-answer-2');
+
+    faqToggleButton2.addEventListener('click', () => {
+        faqAnswer2.classList.toggle('hidden');
+    });
+
+        // Event listeners for the third and fourth FAQ toggle buttons
+        const faqToggleButton3 = document.getElementById('faq-toggle-3');
+    const faqAnswer3 = document.getElementById('faq-answer-3');
+
+    faqToggleButton3.addEventListener('click', () => {
+        faqAnswer3.classList.toggle('hidden');
+    });
+
+    const faqToggleButton4 = document.getElementById('faq-toggle-4');
+    const faqAnswer4 = document.getElementById('faq-answer-4');
+
+    faqToggleButton4.addEventListener('click', () => {
+        faqAnswer4.classList.toggle('hidden');
+    });
+    });
+
+
+    </script>
+
+<style>
+
+    @keyframes popOut {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .pop-out {
+        animation: popOut 0.5s ease-out forwards;
+    }
+
+
+    .gradient-overlay::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 153, 0.7);
+        z-index: 1;
+    }
+    @media screen and (min-width: 768px) {
+        .desktop-clip {
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .custom-desktop-margin {
+            margin-left: 20%;  /* Adjust this value as needed */
+            margin-right: 20%; /* Adjust this value as needed */
+        }
+    }
+    
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <nav class="fixed top-0 w-full bg-blue-500 p-4 z-50">
+        <div class="flex justify-between items-center">
+            <!-- Logo / Branding -->
+            <a href="#" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+                CONTACT US
+            </a>
+            
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-4">
+                <a href="/" class="text-white">HOME</a>
+                <a href="/resurfacing.html" class="text-white">POOL RESURFACING</a>
+                <a href="/vinyl.html" class="text-white">VINYL INSTALLATION</a>
+                <a href="./about.html" class="text-white">ABOUT US</a>
+                <a href="./projects.html" class="text-white">PROJECTS</a>
+                <!-- More links -->
+            </div>
+
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="nav-menu" class="z-50 hidden md:hidden fixed top-0 right-full h-full w-1/2 bg-blue-500 transition-transform duration-300">
+            <div class="block text-white px-4 py-2 text-2xl">Menu</div>
+            <div>
+                <a href="/" class="block text-white hover:bg-blue-700 py-2 px-4">HOME</a>
+             
+            </div>
+             <!-- 
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4 ">POOL RESURFACING</a>
+                <div class="hidden px-4 py-2">Content for Home</div>
+          </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Construction</a>
+                <div class="hidden px-4 py-2">Content for Pool Construction</div>
+            </div>
+            <div>
+                <a href="#" class="block text-white hover:bg-blue-700 py-2 px-4">Pool Renovation</a>
+                <div class="hidden px-4 py-2">Content for Pool Renovation</div>
+            </div> -->
+            <div>
+                <a href="/resurfacing.html" class="block text-white hover:bg-blue-700 py-2 px-4">POOL RESURFACING</a>
+             
+            </div>
+            <div>
+                <a href="/vinyl.html" class="block text-white hover:bg-blue-700 py-2 px-4">VINYL INSTALLATION</a>
+             
+            </div>
+            <div>
+                <a href="./projects.html" class="block text-white hover:bg-blue-700 py-2 px-4">PROJECTS</a>
+             
+            </div>
+            <div>
+                <a href="./about.html" class="block text-white hover:bg-blue-700 py-2 px-4">ABOUT</a>
+             
+            </div>
+            <!-- More links and contents -->
+        </div>
+        
+    </nav>
+
+    <div class="flex justify-center items-center mt-20 mb-4">
+        <img style="max-width:250px;"src="./assets/purevidalogo.png">
+    </div>
+
+    <div class="custom-desktop-margin">
+        <h1 class="text-2xl text-blue-900 font-bold">OUR COMPLETED PROJECTS</h1>
+
+        <p class="my-4">We take pride in our work and are proud to showcase some of our completed projects. </p>
+        <img src="./assets/after.jpeg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 1">
+        <img src="./assets/before.jpeg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 2">
+        <img src="./assets/finished2.jpg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 3">
+        <img src="./assets/before2.jpeg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 4">
+        <img src="./assets/after3.jpeg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 5">
+        <video width="320" height="240" controls>
+            <source src="./assets/MOV_2259.mov" type="video/mp4">
+    
+          Your browser does not support the video tag.
+          </video>
+    </div>
+
+    <br/>
+    <br/>
+
+       <!-- image that takes up 100% of the screen-->
+        <div class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-45" style="background-image: url('https://www.oasispoolconstruction.com/uplift-data/images/banners/bg-cta-m.webp')">
+            <div class="text-center p-5">
+                
+                <h1 class="text-2xl font-bold text-white">ELEVATE YOUR SWIMMING
+                    </h1>
+                <p class="text-white">
+                IN MAHWAH WITH PURE VIDA POOL
+                </p>
+                <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+                <br/>
+                <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
+                    <i class="fa fa-phone" style="font-size:24px"></i>
+                    CALL TODAY 973-000-0000
+                </button>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center m-4">
+            <img style="max-width:250px;"src="./assets/purevidalogo.png"/>
+        </div>
+
+    
+            <h1 class="text-2xl font-bold text-center text-blue-950">Contact</h1>
+            <br/>
+            <p class="text-center text-blue-950">
+                Pure Vida Pool
+                <br/>
+                1234 Main Street
+                <br/>
+                Mahwah, NJ 07430
+                <br/> <br/>
+                Phone: <b>123-456-7890</b>
+            </p>
+            
+            <h1 class="text-2xl font-bold text-center p-4 text-blue-950">Quick Links</h1>
+            
+            <p class="text-center">
+                <a href="#">Home</a>
+                <br/>
+                <a href="#">Google Maps</a>
+                <br/>
+                <a href="#">Leave a Review</a>
+                <br/>
+            </p>   
+            
+            <h1 class="text-2xl font-bold text-center p-4">Service Areas</h1>
+            <p class="text-center p-4">Allendale, NJ | Alpine, NJ | Bergenfield, NJ | Bogota, NJ | Carlstadt, NJ | Cliffside Park, NJ | Closter, NJ | Cresskill, NJ | Demarest, NJ | Dumont, NJ | East Rutherford, NJ | Edgewater, NJ | Elmwood Park, NJ | Emerson, NJ | Englewood Cliffs, NJ | Fairview, NJ | Franklin Lakes, NJ | Garfield, NJ | Glen Rock, NJ | Harrington Park, NJ | Hasbrouck Heights, NJ | Haworth, NJ | Hillsdale, NJ | Ho-Ho-Kus, NJ | Leonia, NJ | Little Ferry, NJ | Lodi, NJ | Lyndhurst, NJ | Maywood, NJ | Midland Park, NJ | Montvale, NJ | Moonachie, NJ | New Milford, NJ | North Arlington, NJ | Northvale, NJ | Norwood, NJ | Oakland, NJ | Old Tappan, NJ | Oradell, NJ | Palisades Park, NJ | Paramus, NJ | Park Ridge, NJ | Ramsey, NJ | Ridgefield, NJ | Ridgefield Park, NJ | Ridgewood, NJ | River Edge, NJ | River Vale, NJ | Rochelle Park, NJ | Rockleigh, NJ | Rutherford, NJ | Saddle Brook, NJ | Saddle River, NJ
+            </p>
+
+        <!-- footer -->
+        <div class="flex justify-center items-center bg-blue-500 p-4">
+            <div class="flex justify-center items-center text-white">
+                © Pure Vida Pool and Spa 2024 , Rights Reserved
+            </div>
+
+
+
+
+
+
+
+    </body>
+    </html>
