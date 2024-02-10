@@ -102,6 +102,10 @@
             margin-right: 20%; /* Adjust this value as needed */
         }
     }
+
+    .menu-adjustment {
+        margin-left: -130px; /* Adjust this value as needed */
+    }
     
 </style>
 
@@ -109,24 +113,24 @@
 
 </head>
 <body>
-    <nav class="fixed top-0 w-full bg-blue-500 p-4 z-50">
+    <nav class="fixed top-0 w-full bg-blue-500 p-6 z-50">
         <div class="flex justify-between items-center">
             <!-- Logo / Branding -->
-            <a href="#" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
-                CONTACT US
-            </a>
-            
+       <!-- This div is for the "CONTACT US" button aligned to the left -->
+       <div>
+        <a href="./contact.html" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+            CONTACT US
+        </a>
+    </div>
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-4">
-                <a href="/" class="text-white">HOME</a>
-                <a href="/resurfacing.html" class="text-white">POOL RESURFACING</a>
-                <a href="/vinyl.html" class="text-white">VINYL INSTALLATION</a>
-                <a href="./projects.html" class="text-white">PROJECTS</a>
-                <a href="./about.html" class="text-white">ABOUT US</a>
-
-                <!-- More links -->
-            </div>
+    <!-- This div is for the centered desktop menu -->
+    <div class="hidden md:flex justify-center flex-grow menu-adjustment">
+        <a href="/" class="text-white mx-2">HOME</a>
+        <a href="/resurfacing.html" class="text-white mx-2">POOL RESURFACING</a>
+        <a href="/vinyl.html" class="text-white mx-2">VINYL INSTALLATION</a>
+        <a href="./projects.html" class="text-white mx-2">PROJECTS</a>
+        <a href="./about.html" class="text-white mx-2">ABOUT US</a>
+    </div>
 
             <!-- Hamburger Icon -->
             <button id="menu-button" class="md:hidden text-white">
@@ -189,7 +193,9 @@
             <p class="text-xl text-white font-bold">Remodeling. Renovating. Building.</p>
             <br/>
             <!-- contact us button-->
+            <a href="./contact.html">
             <button class="bg-blue-900 font-bold text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+        </a>
             <br/>
 
             <!-- button that opens phone number to call-->
@@ -251,7 +257,7 @@
             <div class="text-center p-5">
                 <h1 class="text-2xl text-blue-950 font-bold">AREAS WE SERVICE</h1>
                 <p class="p-4">If you live in Bergen County we would be glad to provide you with our exceptional pool construction services:</p>
-                <div class="text-blue-800">
+                <div class="text-blue-800 mb-10">
                 <p> Ridgewood, NJ</p>
                 <p> Hackensack, NJ</p>
                 <p> Teaneck, NJ</p>
@@ -261,7 +267,7 @@
                 <p> Englewood, NJ</p>
                 <p> Fair Lawn, NJ</p>
                 </div>
-                <button class="m-2 bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">FIND OUT MORE</button>
+                <!-- <button class="m-2 bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">FIND OUT MORE</button> -->
             </div>
         </div>
         
@@ -276,9 +282,9 @@
         <p> At Pure Vida Pool, pool tiling is one of our core services, and we have years of experience in providing customized tiling solutions for our clients. Our team of experts has the knowledge and skill to handle all types of pool tiling projects, from simple repairs to complete installations. They offer a vast selection of tiles in various sizes, shapes, and colors, ensuring that the client's vision for their pool is fully realized. With Pure Vida Pool, you can rest assured that your pool will not only be functional but also a beautiful and luxurious addition to your property.</p>
         <br/>
         <!-- Learn More Button -->
-        <div class="flex justify-center md:justify-start">
+        <!-- <div class="flex justify-center md:justify-start">
             <button class="bg-blue-900 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1 font-bold">LEARN MORE</button>
-        </div>
+        </div> -->
     </div>
 
     <!-- Image Section -->
@@ -299,10 +305,10 @@
                     If you're looking to upgrade the aesthetic appeal of your pool area, look no further than Pure Vida Pool's hardscape services. Our team of skilled professionals can design and install a range of hardscaping features to complement your pool's unique style and enhance the overall look and feel of your outdoor space.
                 </p>
                 <br/>
-                <p class="text-white">
+                <p class="text-white mb-10">
                     From elegant stone walkways to stylish patio areas, our hardscaping services can provide a stunning backdrop for your pool area. Our team will work with you to create a customized plan that incorporates your personal style and preferences, ensuring that your new hardscaping features perfectly complement your pool and surrounding landscape. So why not take your pool area to the next level with Pure Vida Pool's hardscaping services? Contact us today to learn more and schedule your consultation.
                 </p>
-                <button class="m-2 bg-blue-400 text-blue-950 font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">LEARN MORE</button>
+                <!-- <button class="m-2 bg-blue-400 text-blue-950 font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">LEARN MORE</button> -->
             </div>
         </div>
         </div>
@@ -380,7 +386,9 @@
                 <p class="text-white">
                 IN MAHWAH WITH PURE VIDA POOL
                 </p>
+                <a href="./contact.html">
                 <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+                </a>
                 <br/>
                 <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
                     <i class="fa fa-phone" style="font-size:24px"></i>

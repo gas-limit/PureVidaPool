@@ -109,24 +109,24 @@
 
 </head>
 <body>
-    <nav class="fixed top-0 w-full bg-blue-500 p-4 z-50">
+    <nav class="fixed top-0 w-full bg-blue-500 p-6 z-50">
         <div class="flex justify-between items-center">
             <!-- Logo / Branding -->
-            <a href="#" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
-                CONTACT US
-            </a>
-            
+       <!-- This div is for the "CONTACT US" button aligned to the left -->
+       <div>
+        <a href="./contact.html" class="bg-blue-900 text-white font-bold rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50">
+            CONTACT US
+        </a>
+    </div>
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-4">
-                <a href="/" class="text-white">HOME</a>
-                <a href="/resurfacing.html" class="text-white">POOL RESURFACING</a>
-                <a href="/vinyl.html" class="text-white">VINYL INSTALLATION</a>
-                <a href="./projects.html" class="text-white">PROJECTS</a>
-                <a href="./about.html" class="text-white">ABOUT US</a>
-
-                <!-- More links -->
-            </div>
+    <!-- This div is for the centered desktop menu -->
+    <div class="hidden md:flex justify-center flex-grow menu-adjustment">
+        <a href="/" class="text-white mx-2">HOME</a>
+        <a href="/resurfacing.html" class="text-white mx-2">POOL RESURFACING</a>
+        <a href="/vinyl.html" class="text-white mx-2">VINYL INSTALLATION</a>
+        <a href="./projects.html" class="text-white mx-2">PROJECTS</a>
+        <a href="./about.html" class="text-white mx-2">ABOUT US</a>
+    </div>
 
             <!-- Hamburger Icon -->
             <button id="menu-button" class="md:hidden text-white">
@@ -255,7 +255,9 @@
                 <p class="text-white">
                 IN MAHWAH WITH PURE VIDA POOL
                 </p>
+                <a href="./contact.html">
                 <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+                </a>
                 <br/>
                 <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
                     <i class="fa fa-phone" style="font-size:24px"></i>

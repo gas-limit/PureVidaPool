@@ -107,6 +107,88 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- firebase script -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAvXR3-BFO4uDxFpqyRlKUnGPyS4wj7NfQ",
+  authDomain: "puravida-73aea.firebaseapp.com",
+  projectId: "puravida-73aea",
+  storageBucket: "puravida-73aea.appspot.com",
+  messagingSenderId: "1032420527913",
+  appId: "1:1032420527913:web:ef2510783c05a2f4d9b138",
+  measurementId: "G-G1CKM2QH7M"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.getElementById('contactForm').addEventListener('submit', submitForm);
+
+async function submitForm(e) {
+  e.preventDefault();
+
+  // Get values
+  var name = document.querySelector('[name="name"]').value;
+  var email = document.querySelector('[name="email"]').value;
+  var message = document.querySelector('[name="message"]').value;
+
+  var emailDocument = {
+    to: ['porporinoj2@montclair.edu'],
+    message: {
+        subject: 'New Pura Vida Lead',
+        text: `Name: ${name}, Email: ${email}, Message: ${message}`,
+        html: `<div style="font-family: Arial, sans-serif; color: #333;">
+            <h2 style="color: #005A9C;">New Pura Vida Lead</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #005A9C;">${email}</a></p>
+            <p><strong>Message:</strong></p>
+            <blockquote style="margin-left: 20px; border-left: 3px solid #ccc; padding-left: 15px;">${message}</blockquote>
+        </div>
+        `,
+    }
+  }
+
+  try {
+        await addDoc(collection(db, "mail"), emailDocument);
+        alert("Your message has been successfully sent!");
+        document.getElementById('contactForm').reset(); // Clear the form
+    } catch (error) {
+        console.error("Error sending message: ", error);
+        alert("Error sending message: " + error.message);
+    }
+
+    // Construct the message body
+    var messageBody = `Pure Vida Online Form: Name: ${name}, Email: ${email}, Message: ${message}`;
+
+  // Reference to the Firestore collection used by the Twilio extension
+  const messagesCollection = collection(db, "messages");
+
+  // Reference to the form for later use
+  var form = document.getElementById('contactForm');
+
+  // Save the form data to Firestore
+  try {
+    await addDoc(collection(db, "contacts"), {
+      name: name,
+      email: email,
+      message: message
+    });
+
+    // Clear the form fields
+    form.reset();
+  } catch (error) {
+    // Display an error message
+  }
+}
+
+
+
+
+</script>
 </head>
 <body>
     <nav class="fixed top-0 w-full bg-blue-500 p-6 z-50">
@@ -181,25 +263,24 @@
     </div>
 
     <div class="custom-desktop-margin">
-        <h1 class="text-2xl text-blue-900 font-bold ml-4">OUR COMPLETED PROJECTS</h1>
+        <h1 class="text-2xl text-blue-900 font-bold mx-4">CONTACT US</h1>
 
-        <p class="my-4 ml-4">We take pride in our work and are proud to showcase some of our completed projects. </p>
-        <h1 class="text-2xl text-blue-600 font-bold ml-4 my-4">BEFORE</h1>
-        <img src="./assets/before.jpeg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 2">
-        <h1 class="text-2xl text-blue-600 font-bold ml-4 my-4">AFTER</h1>
-        <img src="./assets/after.jpeg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 1">
-        <h1 class="text-2xl text-blue-600 font-bold ml-4 my-4">BEFORE</h1>
-        <img src="./assets/before2.jpeg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 4">
-        <h1 class="text-2xl text-blue-600 font-bold ml-4 my-4">AFTER</h1>
-        <img src="./assets/finished2.jpg" class="h-full w-full h-96 object-cover object-center rounded-lg shadow-lg mb-4" alt="Pool 3">
-
-        <div class="flex justify-center">
-        <video width="320" height="240" controls>
-            <source src="./assets/MOV_2259.mov" type="video/mp4">
-    
-          Your browser does not support the video tag.
-          </video>
-        </div>
+        <!-- Contact us form using firebase firestore -->
+        <form id="contactForm" class="ml-4 bg-blue-600 p-6 rounded-md text-white">
+            Name
+            <br/>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <br/><br/>
+            Email
+            <br/>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <br><br/>
+            Message
+            <br/>
+            <textarea class="text-black w-full h-44" name="message" placeholder="Your Message" required class="w-full"></textarea>
+            <br/><br/>
+            <button type="submit" class="py-2 px-4 bg-blue-900">Send</button>
+        </form>
     </div>
 
     <br/>
@@ -214,9 +295,7 @@
                 <p class="text-white">
                 IN MAHWAH WITH PURE VIDA POOL
                 </p>
-                <a href="./contact.html">
                 <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
-                </a>
                 <br/>
                 <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
                     <i class="fa fa-phone" style="font-size:24px"></i>
