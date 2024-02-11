@@ -129,30 +129,42 @@ const db = getFirestore(app);
 document.getElementById('contactForm').addEventListener('submit', submitForm);
 
 async function submitForm(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  // Get values
-  var name = document.querySelector('[name="name"]').value;
-  var email = document.querySelector('[name="email"]').value;
-  var message = document.querySelector('[name="message"]').value;
+    // Get values from the basic input fields
+    var name = document.querySelector('[name="name"]').value;
+    var email = document.querySelector('[name="email"]').value;
+    var phone = document.querySelector('[name="phone"]').value;
+    var city = document.querySelector('[name="city"]').value;
+    var address = document.querySelector('[name="address"]').value;
+    var referrer = document.querySelector('[name="referrer"]').value;
+    var message = document.querySelector('[name="message"]').value;
 
-  var emailDocument = {
-    to: ['steven@njpuravidapools.com'],
-    message: {
-        subject: 'New Pura Vida Lead',
-        text: `Name: ${name}, Email: ${email}, Message: ${message}`,
-        html: `<div style="font-family: Arial, sans-serif; color: #333;">
-            <h2 style="color: #005A9C;">New Pura Vida Lead</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #005A9C;">${email}</a></p>
-            <p><strong>Message:</strong></p>
-            <blockquote style="margin-left: 20px; border-left: 3px solid #ccc; padding-left: 15px;">${message}</blockquote>
-        </div>
-        `,
-    }
-  }
+    // Get all checked services and join them into a string
+    var services = [...document.querySelectorAll('[name="services"]:checked')].map(input => input.value).join(", ");
 
-  try {
+    // Updated emailDocument to include new fields and the services
+    var emailDocument = {
+        to: ['steven@njpuravidapools.com'],
+        message: {
+            subject: 'New Pura Vida Lead',
+            text: `Name: ${name}, Email: ${email}, Phone: ${phone}, City/Town: ${city}, Address: ${address}, How did you find us?: ${referrer}, Interested Services: ${services}, Message: ${message}`,
+            html: `<div style="font-family: Arial, sans-serif; color: #333;">
+                <h2 style="color: #005A9C;">New Pura Vida Lead</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #005A9C;">${email}</a></p>
+                <p><strong>Phone Number:</strong> ${phone}</p>
+                <p><strong>City/Town:</strong> ${city}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>How did you find us?:</strong> ${referrer}</p>
+                <p><strong>Interested Services:</strong> ${services}</p>
+                <p><strong>Message:</strong></p>
+                <blockquote style="margin-left: 20px; border-left: 3px solid #ccc; padding-left: 15px;">${message}</blockquote>
+            </div>`
+        }
+    };
+
+    try {
         await addDoc(collection(db, "mail"), emailDocument);
         alert("Your message has been successfully sent!");
         document.getElementById('contactForm').reset(); // Clear the form
@@ -160,29 +172,6 @@ async function submitForm(e) {
         console.error("Error sending message: ", error);
         alert("Error sending message: " + error.message);
     }
-
-    // Construct the message body
-    var messageBody = `Pure Vida Online Form: Name: ${name}, Email: ${email}, Message: ${message}`;
-
-  // Reference to the Firestore collection used by the Twilio extension
-  const messagesCollection = collection(db, "messages");
-
-  // Reference to the form for later use
-  var form = document.getElementById('contactForm');
-
-  // Save the form data to Firestore
-  try {
-    await addDoc(collection(db, "contacts"), {
-      name: name,
-      email: email,
-      message: message
-    });
-
-    // Clear the form fields
-    form.reset();
-  } catch (error) {
-    // Display an error message
-  }
 }
 
 
@@ -265,22 +254,157 @@ async function submitForm(e) {
     <div class="custom-desktop-margin">
         <h1 class="text-2xl text-blue-900 font-bold mx-4">CONTACT US</h1>
 
+        <p class="flex justify-center text-center leading-7 mb-12">
+            130 New Road.
+            <br/> 
+            Parsippany, NJ 07054
+            <br/>
+            Phone: 973-000-0000
+        </p>
+
+        <p class="flex justify-center text-center leading-7 font-bold text-xl mb-6">
+            Thank you for your interest in Pura Vida Pool & Spa!
+        </p>
+        <p class="mx-4 flex justify-center leading-7 text-center mb-6">
+Feel free to contact us by phone or by using the feedback form below.  Try and be as detailed as possible so we can best assist you. 
+We respond to ALL inquiries quickly and are excited to assist you!
+        </p>
+
         <!-- Contact us form using firebase firestore -->
-        <form id="contactForm" class="ml-4 bg-blue-600 p-6 rounded-md text-white">
-            Name
-            <br/>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <br/><br/>
-            Email
-            <br/>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <br><br/>
-            Message
-            <br/>
-            <textarea class="text-black w-full h-44" name="message" placeholder="Your Message" required class="w-full"></textarea>
-            <br/><br/>
-            <button type="submit" class="py-2 px-4 bg-blue-900">Send</button>
-        </form>
+<!-- Contact us form using firebase firestore -->
+<form id="contactForm" class="mx-4 p-6 rounded-md" style="background-image: url('./assets/poolwater.png'); background-size: cover;">
+    
+    <div class="text-2xl font-bold flex justify-center text-center">
+        Pure Vida Pool Contact Form
+    </div>
+    <div class="my-4 text-xl flex justify-center text-center">
+        How can we help you?
+Please fill out form below & we’ll be in touch soon
+    </div>
+    
+    <label for="name">Name</label>
+    <br/>
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <br/><br/>
+
+    <label for="email">Email</label>
+    <br/>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    <br/><br/>
+
+    <label for="phone">Phone Number</label>
+    <br/>
+    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+    <br/><br/>
+
+    <label for="city">City/Town</label>
+    <br/>
+    <input type="text" id="city" name="city" placeholder="Your City/Town" required>
+    <br/><br/>
+
+    <label for="address">Address</label>
+    <br/>
+    <input type="text" id="address" name="address" placeholder="Your Address" required>
+    <br/><br/>
+
+    <fieldset class="grid grid-cols-2 gap-4 mb-4">
+        <legend class="col-span-2 font-bold mb-2">Services Interested In:</legend>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="New Pool Gunite">
+            <span class="ml-2">New Pool Gunite</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Inspection">
+            <span class="ml-2">Pool Inspection</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Replacement Liner">
+            <span class="ml-2">Pool Replacement Liner</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="New Pool Fiberglass">
+            <span class="ml-2">New Pool Fiberglass</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Opening">
+            <span class="ml-2">Pool Opening</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Cover">
+            <span class="ml-2">Pool Cover</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="New Pool Vinyl">
+            <span class="ml-2">New Pool Vinyl</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Closing">
+            <span class="ml-2">Pool Closing</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Spill Over Spa">
+            <span class="ml-2">Pool Spill Over Spa</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="New Pool (unsure what type)">
+            <span class="ml-2">New Pool (unsure what type)</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Repair">
+            <span class="ml-2">Pool Repair</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Waterfall">
+            <span class="ml-2">Pool Waterfall</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Consultation">
+            <span class="ml-2">Pool Consultation</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Maintenance">
+            <span class="ml-2">Pool Maintenance</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Outdoor Furniture">
+            <span class="ml-2">Outdoor Furniture</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Design">
+            <span class="ml-2">Pool Design</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Pool Renovation">
+            <span class="ml-2">Pool Renovation</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Outdoor Fire Pits">
+            <span class="ml-2">Outdoor Fire Pits</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Outdoor Kitchens">
+            <span class="ml-2">Outdoor Kitchens</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="services" value="Other">
+            <span class="ml-2">Other</span>
+        </label>
+    </fieldset>
+    
+
+    <label for="referrer">How did you find us?</label>
+    <br/>
+    <input type="text" id="referrer" name="referrer" placeholder="How did you find us?" required>
+    <br/><br/>
+
+    <label for="message">Message</label>
+    <br/>
+    <textarea id="message" name="message" placeholder="Your Message" required class="text-black w-full h-44"></textarea>
+    <br/><br/>
+
+    <button type="submit" class="py-2 px-4 bg-blue-400">Send</button>
+</form>
+
     </div>
 
     <br/>
