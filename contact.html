@@ -166,8 +166,8 @@ async function submitForm(e) {
 
     try {
         await addDoc(collection(db, "mail"), emailDocument);
-        alert("Your message has been successfully sent!");
         document.getElementById('contactForm').reset(); // Clear the form
+        window.location.href = "contact-success.html"; // This is the line you add
     } catch (error) {
         console.error("Error sending message: ", error);
         alert("Error sending message: " + error.message);
