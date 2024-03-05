@@ -77,10 +77,13 @@
         gtag('config', 'AW-16462594465');
     </script>
     <script>
-        gtag('config', 'AW-16462594465/vtq8CIfH0JQZEKGD_ak9', {
-            'phone_conversion_number': '551-287-5050'
-        });
+       gtag('config', 'AW-16462594465/vtq8CIfH0JQZEKGD_ak9', {
+           'phone_conversion_number': '551-287-5050'
+       });
     </script>
+  gtag('config', 'AW-16462594465');
+</script>
+
 <style>
 
     @keyframes popOut {
@@ -120,77 +123,6 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- firebase script -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAvXR3-BFO4uDxFpqyRlKUnGPyS4wj7NfQ",
-  authDomain: "puravida-73aea.firebaseapp.com",
-  projectId: "puravida-73aea",
-  storageBucket: "puravida-73aea.appspot.com",
-  messagingSenderId: "1032420527913",
-  appId: "1:1032420527913:web:ef2510783c05a2f4d9b138",
-  measurementId: "G-G1CKM2QH7M"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-document.getElementById('contactForm').addEventListener('submit', submitForm);
-
-async function submitForm(e) {
-    e.preventDefault();
-
-    // Get values from the basic input fields
-    var name = document.querySelector('[name="name"]').value;
-    var email = document.querySelector('[name="email"]').value;
-    var phone = document.querySelector('[name="phone"]').value;
-    var city = document.querySelector('[name="city"]').value;
-    var address = document.querySelector('[name="address"]').value;
-    var referrer = document.querySelector('[name="referrer"]').value;
-    var message = document.querySelector('[name="message"]').value;
-
-    // Get all checked services and join them into a string
-    var services = [...document.querySelectorAll('[name="services"]:checked')].map(input => input.value).join(", ");
-
-    // Updated emailDocument to include new fields and the services
-    var emailDocument = {
-        to: ['info@njpuravidapools.com'],
-        message: {
-            subject: 'New Pura Vida Lead',
-            text: `Name: ${name}, Email: ${email}, Phone: ${phone}, City/Town: ${city}, Address: ${address}, How did you find us?: ${referrer}, Interested Services: ${services}, Message: ${message}`,
-            html: `<div style="font-family: Arial, sans-serif; color: #333;">
-                <h2 style="color: #005A9C;">New Pura Vida Lead</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #005A9C;">${email}</a></p>
-                <p><strong>Phone Number:</strong> ${phone}</p>
-                <p><strong>City/Town:</strong> ${city}</p>
-                <p><strong>Address:</strong> ${address}</p>
-                <p><strong>How did you find us?:</strong> ${referrer}</p>
-                <p><strong>Interested Services:</strong> ${services}</p>
-                <p><strong>Message:</strong></p>
-                <blockquote style="margin-left: 20px; border-left: 3px solid #ccc; padding-left: 15px;">${message}</blockquote>
-            </div>`
-        }
-    };
-
-    try {
-        await addDoc(collection(db, "mail"), emailDocument);
-        document.getElementById('contactForm').reset(); // Clear the form
-        window.location.href = "contact-success.html"; // This is the line you add
-    } catch (error) {
-        console.error("Error sending message: ", error);
-        alert("Error sending message: " + error.message);
-    }
-}
-
-
-
-
-</script>
 </head>
 <body>
     <nav class="fixed top-0 w-full bg-blue-500 p-6 z-50">
@@ -269,161 +201,51 @@ async function submitForm(e) {
     </div>
 
     <div class="custom-desktop-margin">
-        <h1 class="text-2xl text-blue-900 font-bold mx-4 mb-12">CONTACT US</h1>
 
-        <p class="text-center leading-7 mb-12">
-            Pura Vida Pool & Spa
+        <h1 class="text-2xl font-bold text-center text-blue-950">All Our Services</h1>
 
-            <br/> 
-            Parsippany, NJ 07054
-            <br/>
-            551-287-5050
-        </p>
+        <div class="pt-16 lg:grid lg:grid-cols-2 gap-4">
+            <div class="lg:order-last">
+                <img src="./assets/3d-render.webp" alt="pool" class="rounded-3xl">
+            </div>
+            <div class="lg:pt-[30%]">
+                <h1 class="text-2xl mt-4 underline font-bold text-center text-blue-950 lg:text-left">Pool Design</h1>
+                <p class="mt-4 lg:w-[80%]">PuraVida uses the latest technology when it comes to pool design. We use 3D rendering to show you what your pool will look like before we even start. We also use the latest technology to make sure your pool is built to last.</p>
+            </div>
+        </div>
+        
+        <div class="pt-16 lg:grid lg:grid-cols-2 gap-4">
+            <div>
+                <img src="./assets/nice-pool.webp" class="rounded-3xl" alt="pool">
+            </div>
+            <div class="lg:pt-[30%] ml-16">
+                <h1 class="text-2xl mt-4 underline font-bold text-center text-blue-950 lg:text-left">Pool Renovations</h1>
+                <p class="mt-4 lg:w-[80%]"">Time for a renovation? Updating your pool and coping can change the look of your pool. We can also add a spa, water features, and more. We can also add a new liner to your pool.</p>
+            </div>
+        </div>
+        
 
-        <p class="mx-4 flex justify-center text-center leading-7 font-bold text-xl mb-6">
-            Thank you for your interest in Pura Vida Pool & Spa!
-        </p>
-        <p class="mx-4 flex justify-center leading-7 text-center mb-6">
-Feel free to contact us by phone or by using the feedback form below.  Try and be as detailed as possible so we can best assist you. 
-We respond to ALL inquiries quickly and are excited to assist you!
-        </p>
+        <div class="pt-16 lg:grid lg:grid-cols-2 gap-4">
+            <div class="order-last lg:order-last">
+                <img src="./assets/opening-image.webp" class="w-full h-96 object-cover object-center rounded-3xl" alt="pool">
+            </div>
+            <div class="lg:pt-[20%]">
+                <h1 class="text-2xl mt-4 underline font-bold text-center text-blue-950 lg:text-left">Openings & Closings</h1>
+                <p class="mt-4 lg:w-[80%]">Spring coming to the Jersey Shore? Let our experts get your pool ready for the season with our full opening, which always includes an initial cleaning.</p>
+            </div>
+        </div>
+        
 
-        <!-- Contact us form using firebase firestore -->
-<!-- Contact us form using firebase firestore -->
-<form id="contactForm" class="mx-4 p-6 rounded-md" style="background-image: url('./assets/poolwater.png'); background-size: cover;">
-    
-    <div class="text-2xl font-bold flex justify-center text-center">
-        Pura Vida Pool Contact Form
-    </div>
-    <div class="my-4 text-xl flex justify-center text-center">
-        How can we help you?
-Please fill out form below & we’ll be in touch soon
-    </div>
-    
-    <label for="name">Name</label>
-    <br/>
-    <input type="text" id="name" name="name" placeholder="Your Name" required>
-    <br/><br/>
-
-    <label for="email">Email</label>
-    <br/>
-    <input type="email" id="email" name="email" placeholder="Your Email" required>
-    <br/><br/>
-
-    <label for="phone">Phone Number</label>
-    <br/>
-    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
-    <br/><br/>
-
-    <label for="city">City/Town</label>
-    <br/>
-    <input type="text" id="city" name="city" placeholder="Your City/Town" required>
-    <br/><br/>
-
-    <label for="address">Address</label>
-    <br/>
-    <input type="text" id="address" name="address" placeholder="Your Address" required>
-    <br/><br/>
-
-    <fieldset class="grid gap-4 mb-4">
-        <legend class="col-span-2 font-bold mb-2">Services Interested In:</legend>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="New Pool Gunite">
-            <span class="ml-2">New Pool Gunite</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Inspection">
-            <span class="ml-2">Pool Inspection</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Replacement Liner">
-            <span class="ml-2">Pool Replacement Liner</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="New Pool Fiberglass">
-            <span class="ml-2">New Pool Fiberglass</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Opening">
-            <span class="ml-2">Pool Opening</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Cover">
-            <span class="ml-2">Pool Cover</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="New Pool Vinyl">
-            <span class="ml-2">New Pool Vinyl</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Closing">
-            <span class="ml-2">Pool Closing</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Spill Over Spa">
-            <span class="ml-2">Pool Spill Over Spa</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="New Pool (unsure what type)">
-            <span class="ml-2">New Pool (unsure what type)</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Repair">
-            <span class="ml-2">Pool Repair</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Waterfall">
-            <span class="ml-2">Pool Waterfall</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Consultation">
-            <span class="ml-2">Pool Consultation</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Maintenance">
-            <span class="ml-2">Pool Maintenance</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Outdoor Furniture">
-            <span class="ml-2">Outdoor Furniture</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Design">
-            <span class="ml-2">Pool Design</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Pool Renovation">
-            <span class="ml-2">Pool Renovation</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Outdoor Fire Pits">
-            <span class="ml-2">Outdoor Fire Pits</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Outdoor Kitchens">
-            <span class="ml-2">Outdoor Kitchens</span>
-        </label>
-        <label class="inline-flex items-center">
-            <input type="checkbox" name="services" value="Other">
-            <span class="ml-2">Other</span>
-        </label>
-    </fieldset>
-    
-
-    <label for="referrer">How did you find us?</label>
-    <br/>
-    <input type="text" id="referrer" name="referrer" placeholder="How did you find us?" required>
-    <br/><br/>
-
-    <label for="message">Message</label>
-    <br/>
-    <textarea id="message" name="message" placeholder="Your Message" required class="text-black w-full h-44"></textarea>
-    <br/><br/>
-
-    <button type="submit" class="py-2 px-4 bg-blue-400">Send</button>
-</form>
-
-    </div>
+        <div class="pt-16 lg:grid lg:grid-cols-2 gap-4">
+            <div >
+                <img src="./assets/134225279_m-1024x683.jpg" class="w-full h-96 object-cover object-center rounded-3xl" alt="pool">
+            </div>
+            <div class="lg:ml-16 mt-[20%]">
+                <h1 class="text-2xl mt-4 underline font-bold text-center text-blue-950 lg:text-left">Pool Maintenance</h1>
+                <p class="mt-4 lg:w-[80%]">Sit back and relax and let PuraVida do the rest. Our full maintenance plan includes opening, weekly cleanings, equipment maintenance and closing.</p>
+            </div>
+        </div>
+        
 
     <br/>
     <br/>
@@ -435,9 +257,11 @@ Please fill out form below & we’ll be in touch soon
                 <h1 class="text-2xl font-bold text-white">ELEVATE YOUR SWIMMING
                     </h1>
                 <p class="text-white">
-                IN BERGEN COUNTY WITH PURA VIDA POOL
+                IN BERGEN COUNTY WITH PURA VIDA POOL & SPA
                 </p>
+                <a href="./contact.html">
                 <button class="m-2 text-white font-bold bg-blue-500 text-white rounded-3xl px-6 py-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">CONTACT US</button>
+                </a>
                 <br/>
                 <a href="tel:15512875050">
                 <button class="m-2 bg-blue-300 text-blue-800 font-bold rounded-3xl px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transform transition duration-500 ease-in-out hover:-translate-y-1">
